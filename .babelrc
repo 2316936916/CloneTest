@@ -1,0 +1,39 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": [
+          "last 1 chrome version"
+        ]
+      }
+    ],
+    ["@babel/preset-react", {
+      "runtime": "automatic",
+      "importSource": "react"
+    }],
+    "@emotion/babel-preset-css-prop"
+  ],
+  "env" : {
+    "development": {
+      "plugins": [["@emotion", { "sourceMap" : true }]]
+    },
+    "production": {
+      "plugins": [
+        "@emotion",
+        [
+          "transform-react-remove-prop-types",
+          {
+            "removeImport": true,
+            "additionalLibraries": ["react-style-proptype"]
+          }
+        ]
+      ]
+    }
+  },
+  "plugins": [
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-syntax-dynamic-import",
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "#" }]
+  ]
+}
